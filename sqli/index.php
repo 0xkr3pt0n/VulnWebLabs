@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,12 +70,8 @@
   
   <div class="site-brand">ITGate Academy</div>
   <div class="lab-list">
-    <h2>XSS Lab</h2>
+    <h2>SQLI Lab</h2>
     <a href="lab1.php" class="btn btn-lab">Lab 1</a>
-    <a href="lab2.php" class="btn btn-lab">Lab 2</a>
-    <a href="lab3.php" class="btn btn-lab">Lab 3</a>
-    <a href="lab4.php" class="btn btn-lab">Lab 4</a>
-    <a href="lab5.php" class="btn btn-lab">Lab 5</a>
     <a href="secured.php" class="btn btn-lab">Secured version</a>
     <a href="../index.php" class="btn btn-lab">back</a>
   </div>

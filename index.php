@@ -71,7 +71,7 @@
   <div class="lab-list">
     <h2>Web Application pentesting labs</h2>
     <a href="xss/index.php" class="btn btn-lab">XSS Labs</a>
-    <a href="xss/index.php" class="btn btn-lab">SQLI Labs</a>
+    <a href="sqli/index.php" class="btn btn-lab">SQLI Labs</a>
     <a href="xss/index.php" class="btn btn-lab">IDOR Labs</a>
     <a href="xss/index.php" class="btn btn-lab">command injection Labs</a>
   </div>

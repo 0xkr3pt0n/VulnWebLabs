@@ -71,8 +71,8 @@
   <div class="site-brand">ITGate Academy</div>
   <div class="lab-list">
     <h2>SQLI Lab</h2>
-    <a href="lab1.php" class="btn btn-lab">Lab 1</a>
-    <a href="secured.php" class="btn btn-lab">Secured version</a>
+    <a href="lab1.php" class="btn btn-lab">Lab SQL</a>
+    
     <a href="../index.php" class="btn btn-lab">back</a>
   </div>
 

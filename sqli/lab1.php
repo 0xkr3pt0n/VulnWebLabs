@@ -74,17 +74,19 @@ include("conn.php");
 
   <div class="login-box">
     <form method="post" action="">
-      <input type="text" name="username" class="form-control" placeholder="Username" required>
+      <input type="text" name="email" class="form-control" placeholder="email" required>
       <input type="password" name="password" class="form-control" placeholder="Password" required>
-      <button type="submit" name="login" class="btn btn-login">Login</button>
+      <button type="submit" name="login" class="btn btn-login">Login</button> <br>
+      <br>
+      <a href="lab1_register.php"  class="btn btn-login">Register</a>
     </form>
   </div>
 
   <?php
     if (isset($_POST["login"])) {
-        $username = $_POST["username"];
+        $email = $_POST["email"];
         $password = $_POST["password"];
-        $quey = "select * from user_data where username = '$username' and password= '$password'";
+        $quey = "select * from user_data where email = '$email' and password= '$password'";
         $result = mysqli_query($conn,$quey);
 
         if (mysqli_num_rows($result) > 0) {

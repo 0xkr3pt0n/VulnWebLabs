@@ -1,13 +1,14 @@
 <?php
+
 session_start();
-$username = $_SESSION['username'];
+include("conn.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Welcome</title>
+  <title>Lab 1 - SQLI</title>
   <!-- Bootstrap CSS -->
   <link href="../css/bootstrap.min.css" rel="stylesheet">
   <style>
@@ -20,28 +21,26 @@ $username = $_SESSION['username'];
       background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
-      color: #fff;
     }
-    .welcome-box {
+    h1 {
+      color: #fff;
+      margin-bottom: 30px;
+      font-weight: 700;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    .login-box {
       background: #fff;
-      color: #333;
       border-radius: 20px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-      padding: 40px 30px;
+      padding: 30px 25px;
       max-width: 400px;
       width: 100%;
     }
-    .user-icon {
-      font-size: 60px;
-      color: #2575fc;
-      margin-bottom: 20px;
-    }
-    h2 {
-      font-weight: 700;
+    .form-control {
+      border-radius: 12px;
       margin-bottom: 15px;
     }
-    .btn-logout {
-      margin-top: 20px;
+    .btn-login {
       border-radius: 12px;
       padding: 0.5rem 1.5rem;
       background: #2575fc;
@@ -50,7 +49,7 @@ $username = $_SESSION['username'];
       transition: 0.3s;
       width: 100%;
     }
-    .btn-logout:hover {
+    .btn-login:hover {
       background: #6a11cb;
     }
     .site-brand {
@@ -71,24 +70,43 @@ $username = $_SESSION['username'];
 </head>
 <body>
   <div class="site-brand">ITGate Academy</div>
+  <h1>Register</h1>
 
-  <div class="welcome-box">
-    <div class="user-icon">👤</div>
-    <h2>Welcome, <?php echo $username; ?>!</h2>
-    <p>You have successfully logged in.</p>
+  <div class="login-box">
     <form method="post" action="">
-      <button type="submit" name="logout" class="btn btn-logout">Logout</button>
+      <input type="text" name="username" class="form-control" placeholder="Username" required>
+      <input type="text" name="email" class="form-control" placeholder="email" required>
+      <input type="password" name="password" class="form-control" placeholder="Password" required>
+      <button type="submit" name="register" class="btn btn-login">Register</button>
     </form>
   </div>
-  <?php
-  if (isset($_POST['logout'])) {
-    session_start();
-    session_destroy();
-    header("Location: lab1.php");
-    exit();
-  }
 
-  ?>
+
+  <?php
+    if (isset($_POST["register"])) {
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        $email = $_POST["email"];
+        $query = "INSERT INTO user_data (email, username, password) VALUES ('$email', '$username', '$password')";
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {
+            echo "
+            <br><br>
+            <div class='alert alert-success' role='alert'>
+                 Registration successful. You can now <a href='lab1.php'>login</a>.
+            </div>
+            ";
+        } else {
+            echo "
+            <br><br>
+            <div class='alert alert-danger' role='alert'>
+                 Registration failed: " . mysqli_error($conn) . "
+            </div>
+            ";
+        }
+    }
+  ?> 
 
   <script src="../js/bootstrap.bundle.min.js"></script>
 </body>

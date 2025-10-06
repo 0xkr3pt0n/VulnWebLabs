@@ -1,2 +1,2 @@
 # Web Application Vulnerabilites testing labs
-### By ITGate Academy
+### Sponserd by: ITGate Academy
